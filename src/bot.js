@@ -70,7 +70,7 @@ client.on("message", async (message) => {
                     "An error occured. Either I do not have permissions or the user was not found"
                 );
             }
-        } else if (CMD_NAME === "announce") {
+        } else if (CMD_NAME === "news") {
             console.log(args);
             const msg = args.join(" ");
             console.log(msg);
