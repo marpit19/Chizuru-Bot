@@ -3,12 +3,21 @@ require("dotenv").config();
 const { Client, Intents } = require("discord.js");
 const client = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+    partials: ["MESSAGE", "REACTION"],
 });
+
+const webhookClient = new WebhookClient(
+    process.env.WEBHOOK_ID,
+    process.env.WEBHOOK_TOKEN
+);
+
 const PREFIX = "$";
 
 client.on("ready", () => {
     console.log(`${client.user.tag} is ready!`);
 });
+
+// kick and ban
 
 client.on("message", async (message) => {
     if (message.author.bot) return;
@@ -66,6 +75,46 @@ client.on("message", async (message) => {
             const msg = args.join(" ");
             console.log(msg);
             webhookClient.send(msg);
+        }
+    }
+});
+
+// Reaction roles
+
+client.on("messageReactionAdd", (reaction, user) => {
+    const { name } = reaction.emoji;
+    const member = reaction.message.guild.members.cache.get(user.id);
+    const ID = "877412764551872532";
+    if (reaction.message.id === '877412764551872532') {
+        switch (name) {
+            case "🕸️":
+                member.roles.add("877407987701022731");
+                break;
+            case "🤖":
+                member.roles.add('877408041862041610');
+                break;
+            case "☁️":
+                member.roles.add("877408114658402304");
+                break;
+        }
+    }
+});
+
+client.on("messageReactionRemove", (reaction, user) => {
+    const { name } = reaction.emoji;
+    const member = reaction.message.guild.members.cache.get(user.id);
+    const ID = "877412764551872532";
+    if (reaction.message.id === "877412764551872532") {
+        switch (name) {
+            case "🕸️":
+                member.roles.remove("877407987701022731");
+                break;
+            case "🤖":
+                member.roles.remove("877408041862041610");
+                break;
+            case "☁️":
+                member.roles.remove("877408114658402304");
+                break;
         }
     }
 });
