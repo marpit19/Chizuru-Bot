@@ -10,7 +10,7 @@ client.on("ready", () => {
     console.log(`${client.user.tag} is ready!`);
 });
 
-client.on("message", (message) => {
+client.on("message", async (message) => {
     if (message.author.bot) return;
     // console.log(`Hi ${message.author.tag}!!`);
 
