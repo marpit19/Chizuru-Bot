@@ -17,7 +17,7 @@ client.on("ready", () => {
     console.log(`${client.user.tag} is ready!`);
 });
 
-// kick and ban
+// discord commands
 
 client.on("message", async (message) => {
     if (message.author.bot) return;
