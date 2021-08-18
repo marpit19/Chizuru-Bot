@@ -2,4 +2,4 @@
 
 ## It is a discord bot
 
-![image info](./images/botpfp.jpg)
+<img src="./images/botpfp.jpg" width="300" height="300">
