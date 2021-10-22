@@ -27,6 +27,10 @@ client.on("message", async (message) => {
         message.reply(`Hi!!`);
     }
 
+    if (message.content === "who are you chizuru") {
+        message.reply(`I am a bot`);
+    }
+
     if (message.content === "how are you chizuru?") {
         message.channel.send(`I'm good ${message.author}`);
     }
